@@ -4,10 +4,9 @@ namespace Esyede\SSO;
 
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 use Esyede\SSO\Exceptions\MissingConfigurationException;
-use Esyede\Core\SSOBroker;
+use Esyede\SSO\Core\SSOBroker;
 use Esyede\SSO\Traits\SSOBrokerTrait;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;

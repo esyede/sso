@@ -1,8 +1,8 @@
 <?php
 
-namespace Esyede\Core;
+namespace Esyede\SSO\Core;
 
-use Esyede\Core\Interfaces\SSOBrokerInterface;
+use Esyede\SSO\Core\Interfaces\SSOBrokerInterface;
 
 abstract class SSOBroker implements SSOBrokerInterface
 {

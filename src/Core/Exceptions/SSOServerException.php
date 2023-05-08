@@ -1,6 +1,6 @@
 <?php
 
-namespace Esyede\Core\Exceptions;
+namespace Esyede\SSO\Core\Exceptions;
 
 class SSOServerException extends \Exception
 {

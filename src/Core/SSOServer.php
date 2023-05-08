@@ -1,9 +1,9 @@
 <?php
 
-namespace Esyede\Core;
+namespace Esyede\SSO\Core;
 
-use Esyede\Core\Exceptions\SSOServerException;
-use Esyede\Core\Interfaces\SSOServerInterface;
+use Esyede\SSO\Core\Exceptions\SSOServerException;
+use Esyede\SSO\Core\Interfaces\SSOServerInterface;
 use Throwable;
 
 abstract class SSOServer implements SSOServerInterface

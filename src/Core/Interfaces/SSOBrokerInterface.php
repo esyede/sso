@@ -1,6 +1,6 @@
 <?php
 
-namespace Esyede\Core\Interfaces;
+namespace Esyede\SSO\Core\Interfaces;
 
 interface SSOBrokerInterface
 {

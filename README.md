@@ -54,7 +54,7 @@ Now you should create brokers.
 You can create new broker using following Artisan CLI command:
 
 ```shell
-$ php artisan sso:broker:create {name}
+$ php artisan sso:broker-create {name}
 ```
 
 ----------
