@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Esyede\SSO\Traits\SSOServerTrait;
 use Esyede\Core\SSOServer;
 use Esyede\SSO\Resources\UserResource;
+use Throwable;
 
 class LaravelSSOServer extends SSOServer
 {
@@ -54,6 +55,9 @@ class LaravelSSOServer extends SSOServer
         } catch (ModelNotFoundException $e) {
             // report($e);
             return null;
+        } catch (Throwable $e) {
+            // report($e);
+            return null;
         }
 
         return $broker;
@@ -68,6 +72,10 @@ class LaravelSSOServer extends SSOServer
                 $user = config('sso.users_model')::where('email', $email)->firstOrFail();
             }
         } catch (ModelNotFoundException $e) {
+            // report($e);
+            return null;
+        } catch (Throwable $e) {
+            // report($e);
             return null;
         }
 

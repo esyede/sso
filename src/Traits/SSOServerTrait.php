@@ -53,10 +53,10 @@ trait SSOServerTrait
     protected function getUserInfoMulti(string $userId)
     {
         try {
-            if(config('sso.use_relationship') == true) {
+            if (config('sso.use_relationship') == true) {
                 $user = config('sso.users_model')::where('id', $userId)->with("config('sso.relation_name')")->firstOrFail();
             } else {
-                $user = config('sso.users_model')::where('id', $userId))->firstOrFail();
+                $user = config('sso.users_model')::where('id', $userId)->firstOrFail();
             }
         } catch (ModelNotFoundException $e) {
             return null;
