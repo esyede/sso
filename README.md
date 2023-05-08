@@ -22,7 +22,7 @@ Client visits Broker and unique token is generated. When new token is generated 
 Install this package using composer.
 
 ```shell
-$ composer require AdlyAlimin/sso
+$ composer require esyede/sso
 ```
 
 
@@ -36,7 +36,7 @@ $ php artisan vendor:publish --provider="Esyede\SSO\SSOServiceProvider"
 Create table where all brokers will be saved.
 
 ```shell
-$ php artisan migrate --path=vendor/AdlyAlimin/sso/database/migrations
+$ php artisan migrate --path=vendor/esyede/sso/database/migrations
 ```
 
 Edit `app/Http/Kernel.php` by removing throttle middleware and adding sessions middleware to `api` middlewares array.
