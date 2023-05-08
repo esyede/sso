@@ -62,7 +62,7 @@ $ php artisan sso:broker:create {name}
 ### Broker
 Install this package using composer.
 ```shell
-$ composer require AdlyAlimin/sso
+$ composer require esyede/sso
 ```
 
 
