@@ -174,16 +174,16 @@ when `multi_enabled` is true you can use the multi mode.
 
 - In `LoginController.php` you need rewrite the function `attemptLogin`
 
-```
+```php
 protected function attemptLogin(Request $request)
-    {
-        $broker = new LaravelSSOBroker();
-        $credentials = $this->credentials($request);
-		// this is your own field.
-        $loginKey = $request->input('login_key', '');
+{
+	$broker = new LaravelSSOBroker();
+	$credentials = $this->credentials($request);
+	// this is your own field.
+	$loginKey = $request->input('login_key', '');
 
-        return $broker->handleLogin($credentials[$this->username()], $credentials['password'], $loginKey);
-    }
+	return $broker->handleLogin($credentials[$this->username()], $credentials['password'], $loginKey);
+}
 ```
 
 - your blade/js send the request with params:
@@ -198,16 +198,16 @@ or you can change the name of `login_key` to other key name like  `login_name`
 
  then you need to change the `loginKey`'s name in `attemptLogin` function like this:
 
-```
+```php
 protected function attemptLogin(Request $request)
-    {
-        $broker = new LaravelSSOBroker();
-        $credentials = $this->credentials($request);
+{
+	$broker = new LaravelSSOBroker();
+	$credentials = $this->credentials($request);
 		// this is your own field.
-        $loginKey = $request->input('login_name', '');
+	$loginKey = $request->input('login_name', '');
 
-        return $broker->handleLogin($credentials[$this->username()], $credentials['password'], $loginKey);
-    }
+	return $broker->handleLogin($credentials[$this->username()], $credentials['password'], $loginKey);
+}
 ```
 
 
@@ -216,12 +216,12 @@ protected function attemptLogin(Request $request)
 
 In `sso` it will send a request like this:
 
-```
+```php
 $this->userInfo = $this->makeRequest('POST', 'loginMulti', [
-            $key => $keyValue,
-            'password' => $password,
-            'key' => $key
-        ]);
+	$key => $keyValue,
+	'password' => $password,
+	'key' => $key
+]);
 ```
 
 And your own key `login_key` 's value will be used for authentication.
