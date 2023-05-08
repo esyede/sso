@@ -1,0 +1,37 @@
+{
+  "name": "esyede/sso",
+  "description": "Simple PHP SSO package for Laravel",
+  "keywords": [
+    "laravel",
+    "sso",
+    "authentication",
+    "login"
+  ],
+  "homepage": "https://github.com/esyede/sso",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Suyadi",
+      "email": "suyadi.1992@gmail.com",
+      "homepage": "https://github.com/esyede",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "guzzlehttp/guzzle": "^7.2",
+    "laravel/framework": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Esyede\\SSO\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Esyede\\SSO\\SSOServiceProvider"
+      ]
+    }
+  }
+}
