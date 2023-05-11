@@ -4,6 +4,7 @@ namespace Esyede\SSO;
 
 use Illuminate\Support\ServiceProvider;
 use Esyede\SSO\Commands;
+use Esyede\SSO\Controllers\ServerController;
 
 class SSOServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,7 @@ class SSOServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->make('\Esyede\SSO\Controllers\ServerController');
+        $this->app->make(ServerController::class);
     }
 
     protected function getConfigPath()
@@ -43,7 +44,7 @@ class SSOServiceProvider extends ServiceProvider
 
     protected function loadRoutes()
     {
-        if (config('sso.type') == 'server') {
+        if (config('sso.type') === 'server') {
             $this->loadRoutesFrom(__DIR__ . '/Routes/server.php');
         }
     }

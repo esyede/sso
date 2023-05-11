@@ -23,7 +23,7 @@ trait SSOBrokerTrait
         $this->userInfo = $this->makeRequest('POST', 'loginMulti', [
             $key => $keyValue,
             'password' => $password,
-            'key' => $key
+            'key' => $key,
         ]);
 
         return (!isset($this->userInfo['error']) && isset($this->userInfo['data']['id']));
@@ -49,10 +49,6 @@ trait SSOBrokerTrait
 
     public function handleGetUserInfo()
     {
-        if (config('sso.multi_enabled')) {
-            return $this->getUserInfoMulti();
-        } else {
-            return $this->getUserInfo();
-        }
+        return config('sso.multi_enabled') ? $this->getUserInfoMulti() : $this->getUserInfo();
     }
 }

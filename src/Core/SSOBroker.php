@@ -37,9 +37,9 @@ abstract class SSOBroker implements SSOBrokerInterface
         return $this->userInfo;
     }
 
-    public function login(string $username, string $password)
+    public function login(string $phone, string $password)
     {
-        $this->userInfo = $this->makeRequest('POST', 'login', compact('username', 'password'));
+        $this->userInfo = $this->makeRequest('POST', 'login', compact('phone', 'password'));
         return (!isset($this->userInfo['error']) && isset($this->userInfo['data']['id']));
     }
 

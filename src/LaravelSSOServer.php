@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Esyede\SSO\Traits\SSOServerTrait;
-use Esyede\Core\SSOServer;
+use Esyede\SSO\Core\SSOServer;
 use Esyede\SSO\Resources\UserResource;
 use Throwable;
 
@@ -33,14 +33,14 @@ class LaravelSSOServer extends SSOServer
         return response()->json($response, $httpResponseCode);
     }
 
-    protected function authenticate(string $email, string $password)
+    protected function authenticate(string $phone, string $password)
     {
         if (config('withoutPassword') == true) {
-            $user = config('sso.users_model')::where('email', $email)->firstOrFail();
+            $user = config('sso.users_model')::where('phone', $phone)->firstOrFail();
             return (bool) Auth::loginUsingId($user->id);
         }
 
-        if (!Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (!Auth::attempt(['phone' => $phone, 'password' => $password])) {
             return false;
         }
 
@@ -63,13 +63,13 @@ class LaravelSSOServer extends SSOServer
         return $broker;
     }
 
-    protected function getUserInfo(string $email)
+    protected function getUserInfo(string $phone)
     {
         try {
             if (config('sso.use_relationship') == true) {
-                $user = config('sso.users_model')::where('email', $email)->with("config('sso.relation_name')")->firstOrFail();
+                $user = config('sso.users_model')::where('phone', $phone)->with("config('sso.relation_name')")->firstOrFail();
             } else {
-                $user = config('sso.users_model')::where('email', $email)->firstOrFail();
+                $user = config('sso.users_model')::where('phone', $phone)->firstOrFail();
             }
         } catch (ModelNotFoundException $e) {
             // report($e);

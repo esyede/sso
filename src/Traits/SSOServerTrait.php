@@ -4,7 +4,8 @@ namespace Esyede\SSO\Traits;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
-use Esyede\Core\Exceptions\SSOServerException;
+use Esyede\SSO\Core\Exceptions\SSOServerException;
+use Throwable;
 
 trait SSOServerTrait
 {
@@ -21,6 +22,8 @@ trait SSOServerTrait
                 $this->fail('User authentication failed.');
             }
         } catch (SSOServerException $e) {
+            return $this->returnJson(['error' => $e->getMessage()]);
+        } catch (Throwable $e) {
             return $this->returnJson(['error' => $e->getMessage()]);
         }
 

@@ -78,7 +78,7 @@ class LaravelSSOBroker extends SSOBroker
         }
 
         if (!empty($cookies)) {
-            $body[RequestOptions::COOKIES] = CookieJar::fromArray($cookies, 'todak.com');
+            $body[RequestOptions::COOKIES] = CookieJar::fromArray($cookies, 'tripay.co.id');
         }
 
         $client = new Client;

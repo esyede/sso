@@ -62,12 +62,20 @@ abstract class SSOServer implements SSOServerInterface
             $this->startBrokerSession();
             $this->setSessionData('sso_user', null);
         } catch (SSOServerException $e) {
-            return $this->returnJson(['error' => $e->getMessage()]);
+            report($e);
+            return $this->returnJson([
+                'error' => $e->getMessage(),
+            ], 400);
         } catch (Throwable $e) {
-            return $this->returnJson(['error' => $e->getMessage()]);
+            report($e);
+            return $this->returnJson([
+                'error' => $e->getMessage(),
+            ], 400);
         }
 
-        return $this->returnJson(['success' => 'User has been successfully logged out.']);
+        return $this->returnJson([
+            'success' => 'User has been successfully logged out.',
+        ]);
     }
 
     public function userInfo()

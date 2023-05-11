@@ -24,7 +24,7 @@ class ServerController extends BaseController
     public function login(Request $request, LaravelSSOServer $server)
     {
         return $server->login(
-            $request->get('email', null),
+            $request->get('phone', null),
             $request->get('password', null)
         );
     }

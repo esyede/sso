@@ -66,9 +66,9 @@ trait SSOControllerTrait
         $password = call_user_func([$callable[0], $callable[1]], $user);
 
         if (config('sso.multi_enabled')) {
-            $result = $server->loginMulti($user->email, $password, 'email');
+            $result = $server->loginMulti($user->phone, $password, 'phone');
         } else {
-            $result = $server->login($user->email, $password);
+            $result = $server->login($user->phone, $password);
         }
 
         // sso-login hack
