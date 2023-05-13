@@ -126,7 +126,7 @@ abstract class SSOServer implements SSOServerInterface
         $matches = null;
 
         if (!preg_match('/^SSO-(\w*+)-(\w*+)-([a-z0-9]*+)$/', $this->getBrokerSessionId(), $matches)) {
-            $this->fail('Invalid session id');
+            $this->fail('Invalid session id'));
         }
 
         if ($this->generateSessionId($matches[1], $matches[2]) !== $sessionId) {

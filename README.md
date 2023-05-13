@@ -22,21 +22,21 @@ Client visits Broker and unique token is generated. When new token is generated 
 Install this package using composer.
 
 ```shell
-$ composer require esyede/sso
+composer require esyede/sso
 ```
 
 
 Copy config file to Laravel project `config/` folder.
 
 ```shell
-$ php artisan vendor:publish --provider="Esyede\SSO\SSOServiceProvider"
+php artisan vendor:publish --provider="Esyede\SSO\SSOServiceProvider"
 ```
 
 
 Create table where all brokers will be saved.
 
 ```shell
-$ php artisan migrate --path=vendor/esyede/sso/database/migrations
+php artisan migrate --path=vendor/esyede/sso/database/migrations
 ```
 
 Edit `app/Http/Kernel.php` by removing throttle middleware and adding sessions middleware to `api` middlewares array.
@@ -44,7 +44,8 @@ It's necessary because we need sessions to work in API routes and throttle middl
 
 ```php
 'api' => [
-    'bindings',
+    // ..
+    \Illuminate\Routing\Middleware\SubtituteBindings::class
     \Illuminate\Session\Middleware\StartSession::class,
 ],
 ```
@@ -56,6 +57,8 @@ You can create new broker using following Artisan CLI command:
 ```shell
 $ php artisan sso:broker-create {name}
 ```
+
+**Note:** Broker names should NOT contains non-alphanumeric characters.
 
 ----------
 
@@ -120,7 +123,7 @@ through SSO server but not your Broker page.
 protected function attemptLogin(Request $request)
 {
     $credentials = $this->credentials($request);
-    return (new \Esyede\SSO\LaravelSSOBroker)->login($credentials['email'], $credentials['password']);
+    return (new \Esyede\SSO\LaravelSSOBroker)->login($credentials['phone'], $credentials['password']);
 }
 
 public function logout(Request $request)

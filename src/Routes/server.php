@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('api')->prefix('api/sso')->group(function () {
     Route::post('logout', 'Esyede\SSO\Controllers\ServerController@logout');
-    Route::get('attach', 'Esyede\SSO\Controllers\ServerController@attach');
+    Route::match(['GET', 'POST'], 'attach', 'Esyede\SSO\Controllers\ServerController@attach');
 
     if (config('sso.multi_enabled')) {
         Route::get('userInfoMulti', 'Esyede\SSO\Controllers\ServerController@userInfoMulti');
